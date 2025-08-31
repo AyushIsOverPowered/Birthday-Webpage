@@ -8,11 +8,12 @@
 </head>
 <body>
 
-    <!-- Landing Page Section -->
+    <!-- =========================
+         PAGE 1 - LANDING PAGE
+         ========================= -->
     <section id="page1" class="page">
         <div class="container">
-            <!-- Birthday Text -->
-            <h1 class="birthday-text">Happy Birthday, My Love!</h1>
+            <h1 class="birthday-text">Happy Birthday, My Love 💞</h1>
 
             <!-- Crown Emoji -->
             <div class="crown-wrapper">
@@ -27,7 +28,39 @@
         <canvas id="confettiCanvas"></canvas>
     </section>
 
-    <!-- JS -->
+    <!-- =========================
+         PAGE 2 - TYPEWRITER PAGE
+         ========================= -->
+    <section id="page2" class="page" style="display:none;">
+        <div class="container">
+            <!-- Top Text -->
+            <h1 class="top-text">Happy Birthday Kuchu Puchu</h1>
+
+            <!-- Main Paragraph Container -->
+            <div class="typewriter-container">
+                <p id="typewriterText"></p>
+            </div>
+
+            <!-- Typing Speed Slider -->
+            <div class="slider-container">
+                <label for="speedSlider">Typing Speed:</label>
+                <input type="range" id="speedSlider" min="20" max="200" value="100">
+            </div>
+
+            <!-- Show Full Text Button -->
+            <button id="showFullTextBtn" class="btn">Show Full Text</button>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <button id="backBtn" class="btn">Back</button>
+                <button id="nextBtn2" class="btn">Next</button>
+            </div>
+        </div>
+
+        <!-- Falling Hearts Canvas -->
+        <canvas id="heartsCanvas"></canvas>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
