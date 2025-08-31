@@ -1,0 +1,101 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #ffd1dc, #ffe6f0);
+}
+
+.page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Birthday Text */
+.birthday-text {
+    font-size: 2rem; /* Adjusted for balance with big crown */
+    color: #fff;
+    text-shadow: 0 0 15px #ff7eb9, 0 0 25px #ffb3c6;
+    margin-bottom: 20px;
+    animation: textGlow 2s infinite alternate;
+}
+
+@keyframes textGlow {
+    0% { text-shadow: 0 0 15px #ff7eb9, 0 0 25px #ffb3c6; }
+    100% { text-shadow: 0 0 25px #ff7eb9, 0 0 35px #ffb3c6; }
+}
+
+/* Crown Emoji */
+.crown-wrapper {
+    font-size: 150px; /* Big magical crown */
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.crown {
+    display: inline-block;
+    animation: float 3s ease-in-out infinite, sparkle 2s linear infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes sparkle {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.5); }
+}
+
+/* Button */
+.btn {
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 25px;
+    background-color: #ff7eb9;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 126, 185, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 10; /* Ensure it appears above confetti */
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 126, 185, 0.7);
+}
+
+/* Confetti Canvas */
+#confettiCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Responsive Adjustments for Mobile */
+@media (max-width: 480px) {
+    .birthday-text {
+        font-size: 1.8rem;
+    }
+    .crown-wrapper {
+        font-size: 120px;
+        margin-bottom: 15px;
+    }
+    .btn {
+        padding: 12px 28px;
+        font-size: 1rem;
+    }
+}
