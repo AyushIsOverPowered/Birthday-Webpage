@@ -4,17 +4,21 @@
 const page1 = document.getElementById('page1');
 const page2 = document.getElementById('page2');
 
-document.getElementById('nextBtn').addEventListener('click', () => {
+const nextBtn1 = document.getElementById('nextBtn');
+nextBtn1.addEventListener('click', () => {
     page1.style.display = 'none';
     page2.style.display = 'flex';
 });
 
-document.getElementById('backBtn').addEventListener('click', () => {
+const backBtn = document.getElementById('backBtn');
+const nextBtn2 = document.getElementById('nextBtn2');
+
+backBtn.addEventListener('click', () => {
     page2.style.display = 'none';
     page1.style.display = 'flex';
 });
 
-document.getElementById('nextBtn2').addEventListener('click', () => {
+nextBtn2.addEventListener('click', () => {
     alert("Next page placeholder");
 });
 
@@ -23,25 +27,32 @@ document.getElementById('nextBtn2').addEventListener('click', () => {
  *********************/
 const confettiCanvas = document.getElementById('confettiCanvas');
 const ctx1 = confettiCanvas.getContext('2d');
-confettiCanvas.width = window.innerWidth;
-confettiCanvas.height = window.innerHeight;
+
+function resizeConfettiCanvas() {
+    confettiCanvas.width = confettiCanvas.offsetWidth;
+    confettiCanvas.height = confettiCanvas.offsetHeight;
+}
+window.addEventListener('resize', resizeConfettiCanvas);
+resizeConfettiCanvas();
 
 let confetti = [];
-for (let i = 0; i < 100; i++) {
+const confettiCount = window.innerWidth < 480 ? 50 : 100;
+
+for (let i = 0; i < confettiCount; i++) {
     confetti.push({
         x: Math.random() * confettiCanvas.width,
         y: Math.random() * confettiCanvas.height,
         r: Math.random() * 6 + 4,
-        d: Math.random() * 100,
-        color: `hsl(${Math.random()*360},70%,60%)`,
-        tilt: Math.random()*10-10,
-        tiltAngleIncremental: Math.random()*0.07+0.05,
+        d: Math.random() * confettiCount,
+        color: `hsl(${Math.random() * 360}, 70%, 60%)`,
+        tilt: Math.random() * 10 - 10,
+        tiltAngleIncremental: Math.random() * 0.07 + 0.05,
         tiltAngle: 0
     });
 }
 
 function drawConfetti() {
-    ctx1.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+    ctx1.clearRect(0,0,confettiCanvas.width, confettiCanvas.height);
     confetti.forEach((c,i)=>{
         ctx1.beginPath();
         ctx1.lineWidth = c.r/2;
@@ -49,11 +60,22 @@ function drawConfetti() {
         ctx1.moveTo(c.x + c.tilt + c.r/4, c.y);
         ctx1.lineTo(c.x + c.tilt, c.y + c.tilt + c.r/4);
         ctx1.stroke();
+
         c.tiltAngle += c.tiltAngleIncremental;
-        c.y += (Math.cos(c.d)+3+c.r/2)/2;
+        c.y += (Math.cos(c.d) + 3 + c.r/2)/2;
         c.tilt = Math.sin(c.tiltAngle)*15;
-        if(c.y>confettiCanvas.height){
-            confetti[i]={x:Math.random()*confettiCanvas.width,y:-10,r:c.r,d:c.d,color:c.color,tilt:Math.random()*10-10,tiltAngleIncremental:c.tiltAngleIncremental,tiltAngle:0};
+
+        if(c.y > confettiCanvas.height){
+            confetti[i] = {
+                x: Math.random()*confettiCanvas.width,
+                y: -10,
+                r: c.r,
+                d: c.d,
+                color: c.color,
+                tilt: Math.random()*10-10,
+                tiltAngleIncremental: c.tiltAngleIncremental,
+                tiltAngle: 0
+            }
         }
     });
     requestAnimationFrame(drawConfetti);
@@ -77,32 +99,39 @@ const typewriterText = document.getElementById("typewriterText");
 const speedSlider = document.getElementById("speedSlider");
 const showFullTextBtn = document.getElementById("showFullTextBtn");
 
-let typingSpeed = 200 - parseInt(speedSlider.value) + 20;
-let paraIndex=0, charIndex=0, typingTimeout;
+const minSpeed = 20;
+const maxSpeed = 200;
+let typingSpeed = maxSpeed - parseInt(speedSlider.value) + minSpeed;
 
-function typeParagraph(){
-    if(paraIndex<paragraphs.length){
-        typewriterText.style.opacity = 1;
-        if(charIndex<paragraphs[paraIndex].length){
-            typewriterText.innerHTML+=paragraphs[paraIndex].charAt(charIndex);
+let paraIndex = 0;
+let charIndex = 0;
+let typingTimeout;
+
+typewriterText.innerHTML = ""; // Ensure empty at start
+
+function typeParagraph() {
+    typewriterText.style.opacity = 1;
+    if(paraIndex < paragraphs.length){
+        if(charIndex < paragraphs[paraIndex].length){
+            typewriterText.innerHTML += paragraphs[paraIndex].charAt(charIndex);
             charIndex++;
-            typingTimeout=setTimeout(typeParagraph, typingSpeed);
-        }else{
-            typewriterText.innerHTML+="<br><br>";
+            typingTimeout = setTimeout(typeParagraph, typingSpeed);
+        } else {
+            typewriterText.innerHTML += "<br><br>";
             paraIndex++;
-            charIndex=0;
-            typingTimeout=setTimeout(typeParagraph, typingSpeed);
+            charIndex = 0;
+            typingTimeout = setTimeout(typeParagraph, typingSpeed);
         }
     }
 }
 
 speedSlider.addEventListener("input", ()=>{
-    typingSpeed=200 - parseInt(speedSlider.value) + 20;
+    typingSpeed = maxSpeed - parseInt(speedSlider.value) + minSpeed;
 });
 
 showFullTextBtn.addEventListener("click", ()=>{
     clearTimeout(typingTimeout);
-    typewriterText.innerHTML=paragraphs.join("<br><br>");
+    typewriterText.innerHTML = paragraphs.join("<br><br>");
 });
 
 typeParagraph();
@@ -112,63 +141,54 @@ typeParagraph();
  *********************/
 const heartsCanvas = document.getElementById('heartsCanvas');
 const ctx2 = heartsCanvas.getContext('2d');
-heartsCanvas.width = window.innerWidth;
-heartsCanvas.height = window.innerHeight;
 
-// Heart emojis to use
+function resizeHeartsCanvas() {
+    heartsCanvas.width = heartsCanvas.offsetWidth;
+    heartsCanvas.height = heartsCanvas.offsetHeight;
+}
+window.addEventListener('resize', resizeHeartsCanvas);
+resizeHeartsCanvas();
+
 const heartEmojis = ["❤️", "💖", "💕"];
-
 let hearts = [];
 const heartCount = 50;
 
-for (let i = 0; i < heartCount; i++) {
+for (let i = 0; i < heartCount; i++){
     hearts.push({
-        x: Math.random() * heartsCanvas.width,
-        y: Math.random() * heartsCanvas.height,
-        r: Math.random() * 20 + 15, // controls emoji size
-        d: Math.random() * heartCount,
-        emoji: heartEmojis[Math.floor(Math.random() * heartEmojis.length)],
-        tilt: Math.random() * 10 - 10,
-        tiltAngleIncremental: Math.random() * 0.05 + 0.02,
-        tiltAngle: 0
+        x: Math.random()*heartsCanvas.width,
+        y: Math.random()*heartsCanvas.height,
+        r: Math.random()*25 + 15,
+        emoji: heartEmojis[Math.floor(Math.random()*heartEmojis.length)],
+        tilt: Math.random()*10-10,
+        tiltAngleIncremental: Math.random()*0.05+0.02,
+        tiltAngle:0
     });
 }
 
-function drawHearts() {
-    ctx2.clearRect(0, 0, heartsCanvas.width, heartsCanvas.height);
+function drawHearts(){
+    ctx2.clearRect(0,0,heartsCanvas.width,heartsCanvas.height);
     ctx2.textAlign = "center";
     ctx2.textBaseline = "middle";
-
-    hearts.forEach((h, i) => {
+    hearts.forEach((h,i)=>{
         ctx2.font = `${h.r}px sans-serif`;
-        ctx2.fillText(h.emoji, h.x, h.y);
+        ctx2.fillText(h.emoji,h.x,h.y);
 
         h.tiltAngle += h.tiltAngleIncremental;
-        h.y += 0.5 + Math.cos(h.d); // slow falling
-        h.x += Math.sin(h.tiltAngle) * 0.5;
+        h.y += 0.5 + Math.cos(h.tiltAngle);
+        h.x += Math.sin(h.tiltAngle)*0.5;
 
-        if (h.y > heartsCanvas.height) {
+        if(h.y > heartsCanvas.height){
             hearts[i] = {
-                x: Math.random() * heartsCanvas.width,
-                y: -10,
-                r: h.r,
-                d: h.d,
-                emoji: heartEmojis[Math.floor(Math.random() * heartEmojis.length)],
-                tilt: Math.random() * 10 - 10,
+                x: Math.random()*heartsCanvas.width,
+                y:-10,
+                r:h.r,
+                emoji: heartEmojis[Math.floor(Math.random()*heartEmojis.length)],
+                tilt: Math.random()*10-10,
                 tiltAngleIncremental: h.tiltAngleIncremental,
-                tiltAngle: 0
-            };
+                tiltAngle:0
+            }
         }
     });
     requestAnimationFrame(drawHearts);
 }
-
 drawHearts();
-
-/*********************
- * WINDOW RESIZE HANDLER
- *********************/
-window.addEventListener('resize', () => {
-    heartsCanvas.width = window.innerWidth;
-    heartsCanvas.height = window.innerHeight;
-});

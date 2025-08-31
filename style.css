@@ -1,24 +1,19 @@
 /* =========================
-   IMPORT PACIFICO FONT
-   ========================= */
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
-/* =========================
    GENERAL STYLES
    ========================= */
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    height: auto;       /* allow natural height */
-    overflow-y: auto;   /* enable vertical scroll */
+    height: auto;
+    overflow-y: auto;
 }
 
 /* PAGE CONTAINER */
 .page {
     position: relative;
     width: 100%;
-    min-height: 100vh;  /* ensures full-screen on mobile but allows scroll on PC */
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +29,6 @@ body, html {
     background: linear-gradient(to bottom, #ffd1dc, #ffe6f0);
 }
 
-/* Birthday Text */
 .birthday-text {
     font-size: 2rem;
     color: #fff;
@@ -49,7 +43,6 @@ body, html {
     100% { text-shadow: 0 0 25px #ff7eb9, 0 0 35px #ffb3c6; }
 }
 
-/* Crown Emoji */
 .crown-wrapper {
     font-size: 150px;
     line-height: 1;
@@ -68,10 +61,10 @@ body, html {
 
 @keyframes sparkle {
     0%, 100% { filter: brightness(1); }
-    50% { filter: brightness(1.5); }
+    25%, 75% { filter: brightness(1.7); }
+    50% { filter: brightness(2); }
 }
 
-/* Buttons */
 .btn {
     padding: 12px 28px;
     font-size: 1rem;
@@ -90,7 +83,6 @@ body, html {
     box-shadow: 0 6px 20px rgba(255, 126, 185, 0.7);
 }
 
-/* Confetti Canvas */
 #confettiCanvas {
     position: absolute;
     top: 0;
@@ -108,40 +100,36 @@ body, html {
     background: linear-gradient(to bottom, #ffe6f0, #ffd1dc);
 }
 
-/* Top Text */
 .top-text {
     font-size: 2rem;
-    color: #ff4d6e;
+    color: #ff4d6d;
     margin-bottom: 30px;
-    text-shadow: 0 0 5px #ff007350;
-    position: relative;
-    z-index: 1;
+    text-shadow: 0 0 10px #ff7eb9;
     font-family: 'Pacifico', cursive;
+    z-index: 1;
 }
 
-/* Typewriter Paragraph */
 .typewriter-container {
     max-width: 90%;
     margin: 0 auto 20px auto;
     position: relative;
     z-index: 1;
-    background: rgba(94, 91, 91, 0.2);  /* subtle dark overlay for readability */
+    background: rgba(0,0,0,0.3);
     padding: 15px;
     border-radius: 15px;
 }
 
 #typewriterText {
     font-size: 1.2rem;
-    color: #d27b9f;
-    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
-    line-height: 1.8;           /* increased spacing for readability */
+    color: #ffccd9;
+    line-height: 1.8;
     min-height: 150px;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     font-family: 'Pacifico', cursive;
 }
 
-/* Slider */
 .slider-container {
     margin-bottom: 15px;
     display: flex;
@@ -154,14 +142,12 @@ input[type=range] {
     width: 150px;
 }
 
-/* Navigation Button Container */
 .nav-buttons {
     display: flex;
     justify-content: center;
     margin-top: 15px;
 }
 
-/* Falling Hearts Canvas */
 #heartsCanvas {
     position: absolute;
     top: 0;
@@ -172,9 +158,6 @@ input[type=range] {
     z-index: 0;
 }
 
-/* =========================
-   RESPONSIVE MOBILE
-   ========================= */
 @media (max-width: 480px) {
     .birthday-text, .top-text {
         font-size: 1.8rem;
