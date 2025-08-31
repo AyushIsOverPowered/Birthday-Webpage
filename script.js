@@ -82,7 +82,7 @@ let paraIndex=0, charIndex=0, typingTimeout;
 
 function typeParagraph(){
     if(paraIndex<paragraphs.length){
-        typewriterText.style.opacity=1;
+        typewriterText.style.opacity = 1;
         if(charIndex<paragraphs[paraIndex].length){
             typewriterText.innerHTML+=paragraphs[paraIndex].charAt(charIndex);
             charIndex++;
@@ -108,51 +108,67 @@ showFullTextBtn.addEventListener("click", ()=>{
 typeParagraph();
 
 /*********************
- * PAGE 2 - FALLING HEARTS
+ * PAGE 2 - FALLING HEART EMOJIS
  *********************/
 const heartsCanvas = document.getElementById('heartsCanvas');
 const ctx2 = heartsCanvas.getContext('2d');
 heartsCanvas.width = window.innerWidth;
 heartsCanvas.height = window.innerHeight;
 
-let hearts=[];
-for(let i=0;i<50;i++){
+// Heart emojis to use
+const heartEmojis = ["❤️", "💖", "💕"];
+
+let hearts = [];
+const heartCount = 50;
+
+for (let i = 0; i < heartCount; i++) {
     hearts.push({
-        x:Math.random()*heartsCanvas.width,
-        y:Math.random()*heartsCanvas.height,
-        r:Math.random()*10+5,
-        d:Math.random()*50,
-        color:"rgba(255,105,180,0.7)",
-        tilt:Math.random()*10-10,
-        tiltAngleIncremental:Math.random()*0.05+0.02,
-        tiltAngle:0
+        x: Math.random() * heartsCanvas.width,
+        y: Math.random() * heartsCanvas.height,
+        r: Math.random() * 20 + 15, // controls emoji size
+        d: Math.random() * heartCount,
+        emoji: heartEmojis[Math.floor(Math.random() * heartEmojis.length)],
+        tilt: Math.random() * 10 - 10,
+        tiltAngleIncremental: Math.random() * 0.05 + 0.02,
+        tiltAngle: 0
     });
 }
 
-function drawHearts(){
-    ctx2.clearRect(0,0,heartsCanvas.width,heartsCanvas.height);
-    hearts.forEach((h,i)=>{
-        ctx2.beginPath();
-        ctx2.fillStyle=h.color;
-        ctx2.arc(h.x,h.y,h.r,0,Math.PI*2);
-        ctx2.fill();
-        h.tiltAngle+=h.tiltAngleIncremental;
-        h.y+=0.5+Math.cos(h.d);
-        h.x+=Math.sin(h.tiltAngle)*0.5;
-        if(h.y>heartsCanvas.height){
-            hearts[i]={x:Math.random()*heartsCanvas.width,y:-10,r:h.r,d:h.d,color:h.color,tilt:Math.random()*10-10,tiltAngleIncremental:h.tiltAngleIncremental,tiltAngle:0};
+function drawHearts() {
+    ctx2.clearRect(0, 0, heartsCanvas.width, heartsCanvas.height);
+    ctx2.textAlign = "center";
+    ctx2.textBaseline = "middle";
+
+    hearts.forEach((h, i) => {
+        ctx2.font = `${h.r}px sans-serif`;
+        ctx2.fillText(h.emoji, h.x, h.y);
+
+        h.tiltAngle += h.tiltAngleIncremental;
+        h.y += 0.5 + Math.cos(h.d); // slow falling
+        h.x += Math.sin(h.tiltAngle) * 0.5;
+
+        if (h.y > heartsCanvas.height) {
+            hearts[i] = {
+                x: Math.random() * heartsCanvas.width,
+                y: -10,
+                r: h.r,
+                d: h.d,
+                emoji: heartEmojis[Math.floor(Math.random() * heartEmojis.length)],
+                tilt: Math.random() * 10 - 10,
+                tiltAngleIncremental: h.tiltAngleIncremental,
+                tiltAngle: 0
+            };
         }
     });
     requestAnimationFrame(drawHearts);
 }
+
 drawHearts();
 
 /*********************
  * WINDOW RESIZE HANDLER
  *********************/
-window.addEventListener('resize',()=>{
-    confettiCanvas.width=window.innerWidth;
-    confettiCanvas.height=window.innerHeight;
-    heartsCanvas.width=window.innerWidth;
-    heartsCanvas.height=window.innerHeight;
+window.addEventListener('resize', () => {
+    heartsCanvas.width = window.innerWidth;
+    heartsCanvas.height = window.innerHeight;
 });
