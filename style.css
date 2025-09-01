@@ -214,14 +214,6 @@ input[type=range] {
     margin: 20px auto;
 }
 
-/* On small phones, fallback to single column */
-@media (max-width: 480px) {
-    .notes-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
 .note-card {
     background: rgba(249, 186, 186, 0.816);
     border-radius: 15px;
@@ -233,6 +225,7 @@ input[type=range] {
     opacity: 0;
     transform: translateY(20px);
 }
+
 
 @keyframes fadeUp {
     to {
@@ -327,15 +320,29 @@ input[type=range] {
     }
 }
 
+.album-image {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none; /* Prevents iOS long-press menu */
+  -webkit-user-select: none;   /* Prevents selecting */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 /* =========================
    PAGE 5 - TIMELINE
    ========================= */
-.timeline {
-  position: relative;
-  margin: 30px auto;
-  padding: 10px 0;
-  max-width: 400px;
+
+#page5 {
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
 }
+
+.timeline {
+  border-left: 3px dashed rgba(255,255,255,0.5);
+  margin-left: 20px;
+  padding-left: 20px;
+}
+
 
 .timeline::before {
   content: '';

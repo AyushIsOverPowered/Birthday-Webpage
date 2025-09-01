@@ -7,12 +7,14 @@ const page2 = document.getElementById('page2');
 document.getElementById('nextBtn').addEventListener('click', () => {
     page1.style.display = 'none';
     page2.style.display = 'flex';
+    window.scrollTo(0, 0);
 });
 
 document.getElementById('backBtn').addEventListener('click', () => {
     page2.style.display = 'none';
     page1.style.display = 'flex';
 });
+
 
 /*********************
  * PAGE 1 - CONFETTI
@@ -210,6 +212,7 @@ notes.forEach((note, index) => {
 nextBtn2.addEventListener('click', () => {
     page2.style.display = 'none';
     page3.style.display = 'flex';
+    window.scrollTo(0, 0);
 });
 
 backBtn3.addEventListener('click', () => {
@@ -228,12 +231,14 @@ const nextBtn4 = document.getElementById('nextBtn4');
 nextBtn3.addEventListener('click', () => {
   page3.style.display = 'none';
   page4.style.display = 'flex';
+  window.scrollTo(0, 0);
 });
 
 // From Page 4 → Page 5
 nextBtn4.addEventListener('click', () => {
   page4.style.display = 'none';
   page5.style.display = 'flex';
+  window.scrollTo(0, 0);
 });
 
 // Back to Page 3
@@ -288,6 +293,7 @@ backBtn5.addEventListener('click', () => {
 nextBtn5.addEventListener("click", () => {
   page5.style.display = "none";
   page6.style.display = "flex";
+  window.scrollTo(0, 0);
   startFinalPage();
 });
 
@@ -366,4 +372,9 @@ const backBtn6 = document.getElementById("backBtn6");
 backBtn6.addEventListener("click", () => {
   page6.style.display = "none";
   page5.style.display = "flex";
+});
+
+// Disable right-click / long press menu on album images
+document.querySelectorAll('.album-image').forEach(img => {
+  img.addEventListener('contextmenu', e => e.preventDefault());
 });
