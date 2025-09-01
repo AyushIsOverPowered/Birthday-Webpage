@@ -327,3 +327,52 @@ input[type=range] {
     }
 }
 
+/* =========================
+   PAGE 5 - TIMELINE
+   ========================= */
+.timeline {
+  position: relative;
+  margin: 30px auto;
+  padding: 10px 0;
+  max-width: 400px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #ff7eb9;
+}
+
+.timeline-item {
+  position: relative;
+  margin: 20px 0;
+  padding-left: 50px;
+  opacity: 0; /* hidden initially */
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.timeline-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-date {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #ff4d6d;
+  margin-bottom: 5px;
+}
+
+.timeline-content {
+  background: #fff0f6;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-size: 1rem;
+}
+

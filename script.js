@@ -230,15 +230,16 @@ nextBtn3.addEventListener('click', () => {
   page4.style.display = 'flex';
 });
 
+// From Page 4 → Page 5
+nextBtn4.addEventListener('click', () => {
+  page4.style.display = 'none';
+  page5.style.display = 'flex';
+});
+
 // Back to Page 3
 backBtn4.addEventListener('click', () => {
   page4.style.display = 'none';
   page3.style.display = 'flex';
-});
-
-// Next (placeholder)
-nextBtn4.addEventListener('click', () => {
-  alert("Next page placeholder");
 });
 
 /*********************
@@ -262,14 +263,42 @@ document.querySelectorAll('.photo-grid img').forEach(img => {
 
     // Desktop events
     img.addEventListener('mousedown', () => {
-        holdTimeout = setTimeout(expandImage, 400); // hold for 400ms
+        holdTimeout = setTimeout(expandImage, 150); // hold for 400ms
     });
     img.addEventListener('mouseup', collapseImage);
     img.addEventListener('mouseleave', collapseImage);
 
     // Mobile touch events
     img.addEventListener('touchstart', () => {
-        holdTimeout = setTimeout(expandImage, 400);
+        holdTimeout = setTimeout(expandImage, 150);
     });
     img.addEventListener('touchend', collapseImage);
 });
+
+// Page 5 navigation
+const page5 = document.getElementById('page5');
+const backBtn5 = document.getElementById('backBtn5');
+const nextBtn5 = document.getElementById('nextBtn5');
+
+backBtn5.addEventListener('click', () => {
+  page5.style.display = 'none';
+  document.getElementById('page4').style.display = 'flex';
+});
+
+nextBtn5.addEventListener('click', () => {
+  alert("Next page placeholder"); // replace with Page 6
+});
+
+// Timeline animation on scroll
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+function revealTimeline() {
+  timelineItems.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 50) {
+      item.classList.add('show');
+    }
+  });
+}
+
+document.addEventListener('scroll', revealTimeline);
