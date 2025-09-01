@@ -217,6 +217,59 @@ backBtn3.addEventListener('click', () => {
     page2.style.display = 'flex';
 });
 
+/*********************
+ * PAGE 4 - PHOTO ALBUM
+ *********************/
+const page4 = document.getElementById('page4');
+const backBtn4 = document.getElementById('backBtn4');
+const nextBtn4 = document.getElementById('nextBtn4');
+
+// From Page 3 → Page 4
 nextBtn3.addEventListener('click', () => {
-    alert("Next page placeholder");
+  page3.style.display = 'none';
+  page4.style.display = 'flex';
+});
+
+// Back to Page 3
+backBtn4.addEventListener('click', () => {
+  page4.style.display = 'none';
+  page3.style.display = 'flex';
+});
+
+// Next (placeholder)
+nextBtn4.addEventListener('click', () => {
+  alert("Next page placeholder");
+});
+
+/*********************
+ * PAGE 4 - IMAGE EXPAND CENTERED (HOLD + SHRINK ON RELEASE)
+ *********************/
+const overlay = document.getElementById('overlay');
+
+document.querySelectorAll('.photo-grid img').forEach(img => {
+    let holdTimeout;
+
+    function expandImage() {
+        img.classList.add('expanded');
+        overlay.style.display = 'block';
+    }
+
+    function collapseImage() {
+        clearTimeout(holdTimeout);
+        img.classList.remove('expanded');
+        overlay.style.display = 'none';
+    }
+
+    // Desktop events
+    img.addEventListener('mousedown', () => {
+        holdTimeout = setTimeout(expandImage, 400); // hold for 400ms
+    });
+    img.addEventListener('mouseup', collapseImage);
+    img.addEventListener('mouseleave', collapseImage);
+
+    // Mobile touch events
+    img.addEventListener('touchstart', () => {
+        holdTimeout = setTimeout(expandImage, 400);
+    });
+    img.addEventListener('touchend', collapseImage);
 });
