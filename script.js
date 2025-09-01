@@ -285,8 +285,10 @@ backBtn5.addEventListener('click', () => {
   document.getElementById('page4').style.display = 'flex';
 });
 
-nextBtn5.addEventListener('click', () => {
-  alert("Next page placeholder"); // replace with Page 6
+nextBtn5.addEventListener("click", () => {
+  page5.style.display = "none";
+  page6.style.display = "flex";
+  startFinalPage();
 });
 
 // Timeline animation on scroll
@@ -302,3 +304,66 @@ function revealTimeline() {
 }
 
 document.addEventListener('scroll', revealTimeline);
+
+/*********************
+ * PAGE 6 - FINAL MESSAGE (Word Fade Effect)
+ *********************/
+const finalParagraphEl = document.getElementById("finalParagraph");
+const closingLineEl = document.getElementById("closingLine");
+
+const finalParagraph = 
+  "I know the webpage I made for you isn’t perfect — it has flaws here and there… but every single line of it was written with my heart. I spent more than 15 hours, over 1000 lines of code, and countless attempts because I wanted to give you something truly special, something that came straight from me to you. Even in the middle of my exams, I kept working on it because you deserve every bit of my time, my effort, and my love.\n\n" +
+  "You told me not to spend money, so I thought — what better gift than creating something with my own hands, something that holds our memories, my feelings, and my dedication? ✨ It may not be polished, but it’s real, and it’s ours.\n\n" +
+  "I just hope that when you see it, you don’t just see a webpage, but you feel how much you mean to me. Because this isn’t just some code on a screen — it’s a piece of my heart, my love, my everything for you. 🥺❤️\n\n" +
+  "And if it made you smile even for a moment, then every sleepless hour and retry was worth it. You’re my world, my jaan, my only one… and this was my small way of showing it. 💖";
+
+const closingLine = "Crafted with Love by your husband 💕";
+
+// Word-by-word fade-in
+function startFinalPage() {
+  finalParagraphEl.innerHTML = "";
+  closingLineEl.innerHTML = "";
+  closingLineEl.style.opacity = 0;
+  charIndex6 = 0; // reset closing line typing
+
+  const words = finalParagraph.split(" ");
+  words.forEach(word => {
+    const span = document.createElement("span");
+    span.textContent = word;
+    span.classList.add("fade-word");
+    finalParagraphEl.appendChild(span);
+    finalParagraphEl.appendChild(document.createTextNode(" ")); // keep spacing
+  });
+
+  const spans = finalParagraphEl.querySelectorAll(".fade-word");
+  spans.forEach((span, i) => {
+    setTimeout(() => {
+      span.classList.add("fade-in");
+      // After last word, show closing line
+      if (i === spans.length - 1) {
+        setTimeout(typeClosingLine, 1000);
+      }
+    }, i * 300); // delay between words
+  });
+}
+
+// Closing line - letter by letter + glow at the end
+let charIndex6 = 0;
+function typeClosingLine() {
+  if (charIndex6 < closingLine.length) {
+    closingLineEl.style.opacity = 1;
+    closingLineEl.innerHTML += closingLine.charAt(charIndex6);
+    charIndex6++;
+    setTimeout(typeClosingLine, 120);
+  } else {
+    // Add glow effect once typing is done
+    closingLineEl.classList.add("glimmer");
+  }
+}
+
+// Back Button
+const backBtn6 = document.getElementById("backBtn6");
+backBtn6.addEventListener("click", () => {
+  page6.style.display = "none";
+  page5.style.display = "flex";
+});
