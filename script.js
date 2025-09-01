@@ -378,3 +378,4 @@ backBtn6.addEventListener("click", () => {
 document.querySelectorAll('.album-image').forEach(img => {
   img.addEventListener('contextmenu', e => e.preventDefault());
 });
+
