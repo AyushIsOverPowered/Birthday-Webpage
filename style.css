@@ -6,190 +6,221 @@
 /* =========================
    GENERAL STYLES
    ========================= */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    height: auto;       /* allow natural height */
-    overflow-y: auto;   /* enable vertical scroll */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: auto;
+  /* allow natural height */
+  overflow-y: auto;
+  /* enable vertical scroll */
 }
 
 /* PAGE CONTAINER */
 .page {
-    position: relative;
-    
-    min-height: 100vh;  /* ensures full-screen on mobile but allows scroll on PC */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+  /* ensures full-screen on mobile but allows scroll on PC */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
 }
 
 /* =========================
    PAGE 1 - LANDING PAGE
    ========================= */
 #page1 {
-    background: linear-gradient(to bottom, #ffd1dc, #ffe6f0);
+  background: linear-gradient(to bottom, #ffd1dc, #ffe6f0);
 }
 
 /* Birthday Text */
 .birthday-text {
-    font-size: 2rem;
-    color: #fff;
-    text-shadow: 0 0 15px #1a1919, 0 0 25px #ffb3c6;
-    margin-bottom: 20px;
-    animation: textGlow 2s infinite alternate;
-    font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 0 0 15px #1a1919, 0 0 25px #ffb3c6;
+  margin-bottom: 20px;
+  animation: textGlow 2s infinite alternate;
+  font-family: 'Pacifico', cursive;
 }
 
 @keyframes textGlow {
-    0% { text-shadow: 0 0 15px #ff7eb9, 0 0 25px #ffb3c6; }
-    30% { text-shadow: 0 0 25px #ff7eb9, 0 0 35px #ffb3c6; }
+  0% {
+    text-shadow: 0 0 15px #ff7eb9, 0 0 25px #ffb3c6;
+  }
+
+  30% {
+    text-shadow: 0 0 25px #ff7eb9, 0 0 35px #ffb3c6;
+  }
 }
 
 /* Crown Emoji */
 .crown-wrapper {
-    font-size: 150px;
-    line-height: 1;
-    margin-bottom: 20px;
+  font-size: 150px;
+  line-height: 1;
+  margin-bottom: 20px;
 }
 
 .crown {
-    display: inline-block;
-    animation: float 3s ease-in-out infinite, sparkle 2s linear infinite;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite, sparkle 2s linear infinite;
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes sparkle {
-    0%, 100% { filter: brightness(1); }
-    50% { filter: brightness(1); }
+
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(1);
+  }
 }
 
 /* Buttons */
 .btn {
-    padding: 12px 28px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 25px;
-    background-color: #ff7eb9;
-    color: #fff;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 126, 185, 0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-    margin: 5px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #ff7eb9;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 126, 185, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 5px;
 }
 
 .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 126, 185, 0.7);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 126, 185, 0.7);
 }
 
 /* Confetti Canvas */
 #confettiCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    
-    
-    z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+
+
+  z-index: 0;
 }
 
 /* =========================
    PAGE 2 - TYPEWRITER
    ========================= */
 #page2 {
-    background: linear-gradient(to bottom, #ffe6f0, #ffd1dc);
+  background: linear-gradient(to bottom, #ffe6f0, #ffd1dc);
 }
 
 /* Top Text */
 .top-text {
-    font-size: 2rem;
-    color: #ff4d6e;
-    margin-bottom: 30px;
-    text-shadow: 0 0 5px #ff007350;
-    position: relative;
-    z-index: 1;
-    font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  color: #ff4d6e;
+  margin-bottom: 30px;
+  text-shadow: 0 0 5px #ff007350;
+  position: relative;
+  z-index: 1;
+  font-family: 'Pacifico', cursive;
 }
 
 /* Typewriter Paragraph */
 .typewriter-container {
-    max-width: 90%;
-    margin: 0 auto 20px auto;
-    position: relative;
-    z-index: 1;
-    background: rgba(94, 91, 91, 0.2);  /* subtle dark overlay for readability */
-    padding: 15px;
-    border-radius: 15px;
+  max-width: 90%;
+  margin: 0 auto 20px auto;
+  position: relative;
+  z-index: 1;
+  background: rgba(94, 91, 91, 0.2);
+  /* subtle dark overlay for readability */
+  padding: 15px;
+  border-radius: 15px;
 }
 
 #typewriterText {
-    font-size: 1.2rem;
-    color: #d27b9f;
-    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
-    line-height: 1.8;           /* increased spacing for readability */
-    min-height: 150px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    font-family: 'Pacifico', cursive;
+  font-size: 1.2rem;
+  color: #d27b9f;
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+  line-height: 1.8;
+  /* increased spacing for readability */
+  min-height: 150px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  font-family: 'Pacifico', cursive;
 }
 
 /* Slider */
 .slider-container {
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 input[type=range] {
-    width: 150px;
+  width: 150px;
 }
 
 /* Navigation Button Container */
 .nav-buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  /* add spacing above bottom */
 }
 
 /* Falling Hearts Canvas */
 #heartsCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    
-    
-    z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+
+
+  z-index: 0;
 }
 
 /* =========================
    RESPONSIVE MOBILE
    ========================= */
 @media (max-width: 480px) {
-    .birthday-text, .top-text {
-        font-size: 1.8rem;
-    }
-    .crown-wrapper {
-        font-size: 120px;
-        margin-bottom: 15px;
-    }
-    .btn {
-        padding: 10px 22px;
-        font-size: 0.95rem;
-    }
-    input[type=range] {
-        width: 120px;
-    }
+
+  .birthday-text,
+  .top-text {
+    font-size: 1.8rem;
+  }
+
+  .crown-wrapper {
+    font-size: 120px;
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    padding: 10px 22px;
+    font-size: 0.95rem;
+  }
+
+  input[type=range] {
+    width: 120px;
+  }
 }
 
 
@@ -197,47 +228,48 @@ input[type=range] {
    PAGE 3 - NOTES PAGE
    ========================= */
 #page3 {
-    background: linear-gradient(to bottom, #ffd1dc, #ffe6f0);
-    padding: 20px 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    overflow-y: auto;
+  background: linear-gradient(to bottom, #ffd1dc, #ffe6f0);
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
 }
 
 .notes-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Always 2 columns */
-    gap: 15px;
-    max-width: 900px;
-    margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Always 2 columns */
+  gap: 15px;
+  max-width: 900px;
+  margin: 20px auto;
 }
 
 .note-card {
-    background: rgba(249, 186, 186, 0.816);
-    border-radius: 15px;
-    padding: 15px;
-    font-size: 1rem;
-    color: #333;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.393);
-    animation: fadeUp 0.8s ease forwards;
-    opacity: 0;
-    transform: translateY(20px);
+  background: rgba(249, 186, 186, 0.816);
+  border-radius: 15px;
+  padding: 15px;
+  font-size: 1rem;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.393);
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 
 @keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .note-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    transition: transform 0.3s, box-shadow 0.3s;
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 /* =========================
@@ -258,80 +290,127 @@ input[type=range] {
 }
 
 .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 per row */
-    gap: 12px;
-    justify-items: center;
-    margin: 10px 0 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 per row */
+  gap: 12px;
+  justify-items: center;
+  margin: 10px 0 20px;
 }
 
 .photo-grid img {
-    width: 140px;
-    height: 180px;          /* fixed size for album look */
-    object-fit: cover;      /* cropped */
-    border-radius: 12px;
-    transition: all 0.35s ease;
-    cursor: pointer;
+  width: 140px;
+  height: 180px;
+  /* fixed size for album look */
+  object-fit: cover;
+  /* cropped */
+  border-radius: 12px;
+  transition: all 0.35s ease;
+  cursor: pointer;
+
+  /* Prevent mobile long-press actions */
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE/Edge */
+  user-select: none;
+  /* Standard */
+  -webkit-user-drag: none;
+  /* Prevent dragging image */
 }
 
 /* Expanded full image on hold */
 .photo-grid img.expanded {
-    position: fixed;              /* take it out of grid */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.2); /* centered + zoom */
-    width: auto;
-    height: auto;
-    max-width: 90vw;
-    max-height: 80vh;
-    object-fit: contain;
-    border-radius: 12px;
-    z-index: 1001;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    transition: all 0.3s ease;
+  position: fixed;
+  /* take it out of grid */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  /* centered + zoom */
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 12px;
+  z-index: 1001;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
 }
 
 /* Dark overlay behind expanded image */
 #overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    display: none;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 1000;
 }
 
 /* Tap/Active Scale */
 .photo-grid img:active {
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    z-index: 5;             /* bring zoomed pic above others */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  /* bring zoomed pic above others */
 }
 
 /* Mobile: 1 per row */
 @media (max-width: 480px) {
-    .photo-grid {
-        grid-template-columns: repeat(2, 1fr); /* still 2x2 but shrinks */
-    }
-    .photo-grid img {
-        width: 100px;
-        height: 130px;
-    }
+  .nav-buttons {
+    margin-bottom: 80px;
+    /* extra padding on phones */
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* still 2x2 but shrinks */
+  }
+
+  .photo-grid img {
+    width: 100px;
+    height: 130px;
+  }
 }
 
 .album-image {
   -webkit-user-drag: none;
-  -webkit-touch-callout: none; /* Prevents iOS long-press menu */
-  -webkit-user-select: none;   /* Prevents selecting */
+  -webkit-touch-callout: none;
+  /* Prevents iOS long-press menu */
+  -webkit-user-select: none;
+  /* Prevents selecting */
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
 /* PAGE 5 TIMELINE - LEFT LINE WITH PINS */
+@keyframes bgFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 #page5 {
-  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee, #fad0c4);
+  background-size: 300% 300%;
+  animation: bgFlow 12s ease infinite;
+  background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+  /* example pattern */
   padding: 40px 20px;
   display: flex;
   justify-content: center;
@@ -340,9 +419,11 @@ input[type=range] {
 .timeline {
   position: relative;
   width: 100%;
-  max-width: 400px; /* container width */
+  max-width: 400px;
+  /* container width */
   margin: 0 auto;
-  padding-left: 30px; /* space for vertical line & pins */
+  padding-left: 30px;
+  /* space for vertical line & pins */
   box-sizing: border-box;
 }
 
@@ -350,7 +431,8 @@ input[type=range] {
 .timeline::before {
   content: '';
   position: absolute;
-  left: 15px;  /* line on the left */
+  left: 15px;
+  /* line on the left */
   top: 0;
   bottom: 0;
   width: 3px;
@@ -370,14 +452,16 @@ input[type=range] {
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: 6px;   /* centered on line */
-  top: 10px;   /* vertical offset from the top of the block */
+  left: 6px;
+  /* centered on line */
+  top: 10px;
+  /* vertical offset from the top of the block */
   width: 18px;
   height: 18px;
   background-color: #ff4d6d;
   border: 3px solid #fff;
   border-radius: 50%;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 /* timeline date above block */
@@ -386,18 +470,22 @@ input[type=range] {
   font-weight: bold;
   color: #ff4d6d;
   margin-bottom: 8px;
-  text-align: left; /* aligned with note block */
-  margin-left: 40px; /* leave space for the pin */
+  text-align: left;
+  /* aligned with note block */
+  margin-left: 40px;
+  /* leave space for the pin */
 }
 
 /* timeline content */
 .timeline-content {
   background: #fff0f6;
   padding: 12px;
+  font-family: 'Dancing Script', cursive;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   font-size: 1rem;
-  margin-left: 40px; /* space for pin */
+  margin-left: 40px;
+  /* space for pin */
   position: relative;
 }
 
@@ -426,11 +514,42 @@ input[type=range] {
 /* =========================
    PAGE 6 - FINAL MESSAGE
    ========================= */
+/* Background falling stars/petals */
 #page6 {
-  background: linear-gradient(to bottom right, #ffe6f0, #e6e6fa);
-  color: #4a4a4a;
-  text-align: center;
+  background: linear-gradient(to bottom, #ffe6f0, #e0bbff);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Stars/Petals Canvas */
+#starsCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Paragraph Box */
+.final-box {
+  background: rgba(255, 255, 255, 0.367);
+  border-radius: 20px;
   padding: 20px;
+  margin: 20px auto;
+  max-width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* Paragraph Font */
+#finalParagraph {
+  font-family: 'Merriweather', serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  text-align: center;
 }
 
 #finalParagraph {
@@ -455,8 +574,13 @@ input[type=range] {
 }
 
 @keyframes glimmer {
-  from { text-shadow: 0 0 5px #ff7eb9, 0 0 10px #ffb3c6; }
-  to   { text-shadow: 0 0 15px #ff7eb9, 0 0 20px #ffb3c6; }
+  from {
+    text-shadow: 0 0 5px #ff7eb9, 0 0 10px #ffb3c6;
+  }
+
+  to {
+    text-shadow: 0 0 15px #ff7eb9, 0 0 20px #ffb3c6;
+  }
 }
 
 /* Word Fade-in Animation */
@@ -479,6 +603,11 @@ input[type=range] {
 }
 
 @keyframes glow {
-  0% { text-shadow: 0 0 5px #ff7eb9, 0 0 10px #ff4d6d; }
-  100% { text-shadow: 0 0 15px #ff7eb9, 0 0 25px #ff4d6d; }
+  0% {
+    text-shadow: 0 0 5px #ff7eb9, 0 0 10px #ff4d6d;
+  }
+
+  100% {
+    text-shadow: 0 0 15px #ff7eb9, 0 0 25px #ff4d6d;
+  }
 }
